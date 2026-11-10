@@ -1,0 +1,23 @@
+header {
+  border-bottom: 1px solid;
+}
+
+footer {
+  border-top: 1px solid;
+}
+
+/* Custom element #1: <work-card>*/
+work-card {
+  display: inline-block;
+  vertical-align: top;
+  width: 12rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid;
+}
+
+work-card > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

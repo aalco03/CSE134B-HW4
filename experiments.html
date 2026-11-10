@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Experimental HTML elements on Alejandro Alcocer's site: audio, video, canvas, template, and custom elements.">
+  <title>Experiments | Alejandro Alcocer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="template.css">
+  <style>
+    canvas {
+      border: 1px solid;
+    }
+  </style>
+  <script src="scripts/hello-world.js" defer></script>
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <p><a href="index.html">Alejandro Alcocer</a></p>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">|</span>
+        <a href="writing.html">Writing</a>
+        <span aria-hidden="true">|</span>
+        <a href="research.html">Research &amp; Projects</a>
+        <span aria-hidden="true">|</span>
+        <a href="favorites.html">Favorite Works</a>
+        <span aria-hidden="true">|</span>
+        <a href="experiments.html" aria-current="page">Experiments</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Experiments</h1>
+      <p>Some experimental tags in HTML.</p>
+
+      <section>
+        <h2>Audio</h2>
+        <figure>
+          <audio controls preload="none">
+            <source src="media/DukeEllingtonRose.mp3" type="audio/mpeg">
+            <a href="media/DukeEllingtonRose.mp3">Download the song</a>
+          </audio>
+          <figcaption><cite>The Single Petal of a Rose</cite>, Duke Ellington, from <cite>The Queen's Suite</cite>.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Video</h2>
+        <figure>
+          <video controls preload="metadata" width="424" height="240">
+            <source src="media/rocket-launch.mp4" type="video/mp4">
+            <a href="media/rocket-launch.mp4">Download the video</a>
+          </video>
+          <figcaption>My model rocket launch from middle school.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Canvas</h2>
+        <figure>
+          <canvas id="flight-path" width="400" height="200">A drawing of my rocket's flight path: straight up from the launch pad, then arcing back down to land (in the neighbor's house).</canvas>
+          <figcaption>My rocket's flight path, drawn with a few lines of JavaScript on a canvas.</figcaption>
+        </figure>
+        <script>
+          const ctx = document.getElementById('flight-path').getContext('2d');
+          ctx.font = '14px serif';
+          ctx.setLineDash([6, 4]);
+          ctx.beginPath();
+          ctx.moveTo(30, 130);
+          ctx.quadraticCurveTo(200, -90, 370, 172);
+          ctx.stroke();
+          ctx.fillRect(25, 140, 10, 32);
+          ctx.beginPath();
+          ctx.moveTo(23, 140);
+          ctx.lineTo(30, 126);
+          ctx.lineTo(37, 140);
+          ctx.fill();
+          ctx.fillText('Launch', 8, 192);
+          ctx.fillText('Landing', 340, 192);
+        </script>
+        <noscript>
+          <p>JavaScript is turned off, so the canvas drawing can't be shown.</p>
+        </noscript>
+      </section>
+
+      <section>
+        <h2>Template</h2>
+        <p>The quote card below lives in a <code>&lt;template&gt;</code>. It isn't shown until a script copies it onto the page, so you'll only find it in the page source.</p>
+        <template id="quote-card">
+          <blockquote>
+            <p>"Verily the lust for comfort murders the passion of the soul, and then walks grinning in the funeral."</p>
+            <p>Kahlil Gibran, <cite>The Prophet</cite></p>
+          </blockquote>
+        </template>
+      </section>
+
+      <section>
+        <h2>Custom Element</h2>
+        <hello-world></hello-world>
+        <p>The <code>&lt;hello-world&gt;</code> element prints "Hello World!" to the browser console without changing the page. Open DevTools to see it.</p>
+      </section>
+
+      <section>
+        <h2>MathML</h2>
+        <math display="block">
+          <mi>E</mi>
+          <mo>=</mo>
+          <mi>m</mi>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </math>
+      </section>
+    </main>
+
+    <footer>
+      <p>Alejandro Alcocer<br>
+      <a href="mailto:aalcocer@ucsd.edu">aalcocer@ucsd.edu</a></p>
+    </footer>
+  </div>
+</body>
+</html>

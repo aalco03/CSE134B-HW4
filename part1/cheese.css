@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    line-height: normal
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.latin {
+    font-style: italic;
+}
+
+#warning {
+    background-color: yellow;
+}
+
+.page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+blockquote {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding: 0 10px;
+    margin: 20px 20px;
+}
+
+.link {
+    color: #0066cc;
+    text-decoration: underline;
+    transition: all 0.1s ease-in-out;
+}
+
+.link:hover, .link:focus {
+    color: #003366;
+    text-decoration: none;
+    outline: 5px solid #faf44a;
+}
+
+
+.nolink {
+    color: #d83232;
+    transition: all 0.1s ease-in-out;
+}
+
+input.nolink:hover,
+button.nolink:hover,
+input.nolink:focus,
+input.nolink:focus-visible,
+button.nolink:focus,
+button.nolink:focus-visible {
+    color: #940202;
+    outline: 2px solid #940202;
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+#warning {
+    background-color: red;
+    /* Since both warning rules have the same background color specificity, the source order will decide, and give this last declaration higher priority*/
+}

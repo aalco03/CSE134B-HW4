@@ -1,0 +1,165 @@
+/* Shared design choices for the whole site */
+:root {
+  --color-bg: #faf3e1;
+  --color-text: black;
+  --color-accent: rgb(228, 0, 124); /* some nice mexican pink :) */
+  --font-body: 'Courier New', Courier, monospace;
+  --page-width: 60rem;
+  --space: 1rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  background-image: url("images/paper.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  font-size: 1.3rem;
+}
+
+img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* this attribute slector targets PNG images, which are mostly transparent logos on my site, to get a shape-following shadow instead of a normal
+drop shadow, so that it does not look strange */
+img[src$=".png"] {
+  box-shadow: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+
+}
+
+.page-container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--space);
+}
+
+/* this descendant combinator will style only the main nav bar links and leave all other links unchanged */
+header nav a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+header nav a:hover {
+  color: var(--color-accent);
+}
+
+header nav a:focus-visible {
+  outline: 2px solid gray;
+  outline-offset: 2px;
+}
+
+header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* centered portrait on home page */
+.portrait img {
+  display: block;
+  margin: 30px auto;
+}
+
+/* figures side by side in the home page */
+.figure-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5rem;
+}
+
+.figure-row figure {
+  margin: 0;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.book-grid work-card {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin: 0;
+}
+
+/* this is a child combinator that affects only the cover images directly inside each book card, and will not affect the link icons
+that also exist within it, which are also images */
+.book-grid work-card > img {
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.book-grid work-card > p:last-child {
+    margin-top: auto;
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+}
+
+img, input, textarea {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+/* tablet optimization for book layout (2 per row) */
+@media (max-width: 48rem) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* settings altered for mobile devices */
+@media (max-width: 30rem) {
+  /* only one book per row */
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book-grid work-card {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    column-gap: var(--space);
+    align-content: start;
+  }
+
+  .book-grid work-card > img {
+    grid-row: span 3;
+  }
+
+  .book-grid work-card > :not(img) {
+    grid-column: 2;
+    margin: 0.25rem 0;
+  }
+
+  header nav span {
+    display: none;
+  }
+
+  header nav a {
+    padding: 0.25rem 0;
+  }
+
+  form label {
+    display: block;
+  }
+
+  input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
