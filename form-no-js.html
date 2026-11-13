@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Form written in pure HTML.">
+  <title>HTML Form | Alejandro Alcocer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="template.css">
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <p><a href="index.html">Alejandro Alcocer</a></p>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">|</span>
+        <a href="writing.html">Writing</a>
+        <span aria-hidden="true">|</span>
+        <a href="research.html">Research &amp; Projects</a>
+        <span aria-hidden="true">|</span>
+        <a href="favorites.html">Favorite Works</a>
+        <span aria-hidden="true">|</span>
+        <a href="experiments.html">Experiments</a>
+        <span aria-hidden="true">|</span>
+        <a href="form-no-js.html" aria-current="page">HTML Form</a>
+        <span aria-hidden="true">|</span>
+        <a href="form-with-js.html">JS Form</a>
+      </nav>
+    </header>
+
+    <main>
+        <h1> Pure HTML Form </h1>
+
+        <div>
+            <form action="https://httpbin.org/post" method="POST" class="flex-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="user" autocomplete="name" minlength="1" maxlength="100" placeholder="Enter your full name here..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="user_email" autocomplete="email" placeholder="Enter your well-formatted email (including an '@') here..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user_comment">Leave us a comment:</label>
+                    <textarea id="user_comment" name="comment" rows="4" cols="50" placeholder="Comments go here..." 
+                    minlength="10" maxlength="1000" required></textarea>
+                </div>    
+                    <input type="hidden" id="bot" name="possible_bot" value="true">
+
+                    <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+  </div>
+</body>
+</html>

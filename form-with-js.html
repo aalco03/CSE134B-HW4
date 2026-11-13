@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Form written with JavaScript enhancements.">
+  <title>Javascript-Enhanced Form | Alejandro Alcocer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="template.css">
+  <script src="form.js" defer></script>
+  <script src="scripts/theme.js"></script>
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <p><a href="index.html">Alejandro Alcocer</a></p>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">|</span>
+        <a href="writing.html">Writing</a>
+        <span aria-hidden="true">|</span>
+        <a href="research.html">Research &amp; Projects</a>
+        <span aria-hidden="true">|</span>
+        <a href="favorites.html">Favorite Works</a>
+        <span aria-hidden="true">|</span>
+        <a href="experiments.html">Experiments</a>
+        <span aria-hidden="true">|</span>
+        <a href="form-no-js.html">HTML Form</a>
+        <span aria-hidden="true">|</span>
+        <a href="form-with-js.html" aria-current="page">JS Form</a>
+      </nav>
+
+      <button type="button" id="theme-toggle" hidden>Switch to dark mode</button>
+    </header>
+
+    <main>
+        <h1> Javascript-Enhanced Form </h1>
+
+        <section>
+            <form id="user-form" action="https://httpbin.org/post" method="POST" class="flex-form">
+                <div class="form-group">
+                    <label for="user_name">Name:</label>
+                    <input type="text" id="user_name" name="name" autocomplete="name" minlength="1" maxlength="100" placeholder="Enter your full name here..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_email">Email:</label>
+                    <input type="email" id="user_email" name="email" autocomplete="email" placeholder="Enter your well-formatted email (including an '@') here..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user_comment">Leave us a comment:</label>
+                    <textarea id="user_comment" name="comment" rows="4" cols="50" placeholder="Comments go here..." 
+                    minlength="10" maxlength="1000" aria-describedby="comment-info comment-warning user_comment-error" required></textarea>
+                </div>
+                
+                <div class="message-area" id="error-area" hidden>
+                    <h2 id="error-heading">Errors</h2>
+                    <div aria-live="polite">
+                        <p id="user_name-error" class="error-msg"></p>
+                        <p id="user_email-error" class="error-msg"></p>
+                        <p id="user_comment-error" class="error-msg"></p>
+                    </div>
+                </div>
+
+                <div class="message-area" id="info-area" hidden>
+                    <h2 id="info-heading">Comment length</h2>
+                    <p id="comment-info"><span id="comment-count"></span> Minimum 10 characters.</p>
+                    <p id="comment-warning" aria-live="polite"></p>
+                </div>
+                    <input type="hidden" id="bot" name="possible_bot" value="true">
+                    <input type="hidden" id="form-errors" name="form-errors">
+
+                    <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+  </div>
+</body>
+</html>

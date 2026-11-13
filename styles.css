@@ -21,3 +21,66 @@ work-card > img {
   width: 100%;
   height: auto;
 }
+
+.flex-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group:has(input:required, textarea:required) label::after {
+  font-size: small;
+  content: " required";
+  color: rgb(228, 6, 6);
+  font-weight: bold;
+}
+
+[aria-invalid="true"] {
+  border: 2px solid rgb(228, 6, 6);
+  border-left-width: 6px;
+}
+
+.error-msg:empty {
+  margin: 0;
+}
+
+.error-msg:not(:empty)::before {
+  content: "! ";
+  color: rgb(228, 6, 6);
+}
+
+/* Same border width in every state so validation styling never shifts the layout */
+.flex-form input, .flex-form textarea {
+  border: 2px solid var(--color-border);
+}
+
+/* Only after the user edits a field or tries to submit, so empty fields aren't errors on load.
+   Dashed vs solid gives a cue that doesn't depend on color. */
+.flex-form input:user-invalid, .flex-form textarea:user-invalid {
+  border-style: dashed;
+  border-color: var(--color-error);
+}
+
+.flex-form input:user-valid, .flex-form textarea:user-valid {
+  border-color: var(--color-valid);
+}
+
+/* Character count styling once the comment is near the limit */
+.near-limit #comment-count,
+.near-limit #comment-warning {
+  font-weight: bold;
+}
+
+.near-limit #comment-count {
+  text-decoration: underline wavy var(--color-error);
+  text-underline-offset: 4px;
+}
+

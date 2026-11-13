@@ -1,16 +1,43 @@
 /* Shared design choices for the whole site */
 :root {
+  color-scheme: light;
   --color-bg: #faf3e1;
   --color-text: black;
+  --color-link: #b0005f;
   --color-accent: rgb(228, 0, 124); /* some nice mexican pink :) */
+  --color-border: black;
+  --color-control-bg: white;
+  --color-control-text: black;
+  --color-placeholder: #5c5c5c;
+  --color-focus: #1f5fbf;
+  --color-error: #b00020;
+  --color-valid: #1d6b2f;
+  --bg-image: url("images/paper.jpg");
   --font-body: 'Courier New', Courier, monospace;
   --page-width: 60rem;
   --space: 1rem;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #1c1b19;
+  --color-text: #f1ece0;
+  --color-link: #ff7ac0;
+  --color-accent: #ff7ac0;
+  --color-border: #f1ece0;
+  --color-control-bg: #2a2926;
+  --color-control-text: #f1ece0;
+  --color-placeholder: #b5b0a5;
+  --color-focus: #8ab4ff;
+  --color-error: #ff8a8a;
+  --color-valid: #7fd18b;
+  --bg-image: none;
+}
+
+
 body {
   background-color: var(--color-bg);
-  background-image: url("images/paper.jpg");
+  background-image: var(--bg-image);
   background-size: cover;
   background-attachment: fixed;
   background-blend-mode: multiply;
@@ -19,6 +46,9 @@ body {
   font-size: 1.3rem;
 }
 
+a {
+  color: var(--color-link);
+}
 img {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -45,11 +75,6 @@ header nav a {
 
 header nav a:hover {
   color: var(--color-accent);
-}
-
-header nav a:focus-visible {
-  outline: 2px solid gray;
-  outline-offset: 2px;
 }
 
 header nav a[aria-current="page"] {
@@ -114,6 +139,15 @@ img, input, textarea {
 
 img {
   height: auto;
+}
+
+::placeholder {
+  color: var(--color-placeholder);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 /* tablet optimization for book layout (2 per row) */
