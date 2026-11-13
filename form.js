@@ -7,7 +7,7 @@ const charWarning = document.getElementById('comment-warning');
 
 const fields = [nameEntry, mailEntry, commentEntry];
 const editedFields = new Set();
-const REMAINING_CHARS = 100;
+const REMAINING_CHARS = 99;
 const errHistory = document.getElementById('form-errors');
 const errorArea = document.getElementById('error-area');
 const infoArea = document.getElementById('info-area');
@@ -64,7 +64,7 @@ function updateCharCount() {
     if (remainder === 0) {
         warning = `Warning: Take it easy champ, you reached the ${maxLen}-character limit. Keep it short and sweet, or anything extra you throw in won't be included.`;
     } else if (remainder <= REMAINING_CHARS) {
-        warning = `Warning: You still got some room bucko, but be careful, less than ${REMAINING_CHARS} characters left.`
+        warning = `Warning: You still got some room bucko, but be careful, you have less than 100 characters left.`
     }
     if (charWarning.textContent !== warning) {
         charWarning.textContent = warning;
